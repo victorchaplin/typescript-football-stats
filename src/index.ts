@@ -1,7 +1,8 @@
 import fs from 'fs';
+import { MatchResult } from './MatchResult';
 
 const matches = fs
-  .readFileSync('football.csv', {
+  .readFileSync('./resources/football.csv', {
     encoding: 'utf-8',
   })
   .split('\n')
@@ -15,8 +16,8 @@ let manUtdWins = 0;
 
 for (let match of matches) {
   if (
-    (match[1] === 'Man United' && match[5] === 'H') ||
-    (match[2] === 'Man United' && match[5] === 'A')
+    (match[1] === 'Man United' && match[5] === MatchResult.HomeWin) ||
+    (match[2] === 'Man United' && match[5] === MatchResult.AwayWin)
   ) {
     manUtdWins++;
   }
