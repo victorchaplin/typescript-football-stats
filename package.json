@@ -1,0 +1,30 @@
+{
+  "name": "typescript-football-stats",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start:build": "tsc -w",
+    "start:run": "nodemon build/index.js",
+    "start": "concurrently npm:start:*",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/victorchaplin/typescript-football-stats.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/victorchaplin/typescript-football-stats/issues"
+  },
+  "homepage": "https://github.com/victorchaplin/typescript-football-stats#readme",
+  "devDependencies": {
+    "concurrently": "^4.1.1",
+    "nodemon": "^1.19.1"
+  },
+  "dependencies": {
+    "@types/node": "^12.7.1"
+  }
+}
