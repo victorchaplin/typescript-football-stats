@@ -1,16 +1,10 @@
-import fs from 'fs';
 import { MatchResult } from './MatchResult';
+import { CsvFileReader } from './CsvFileReader';
 
-const matches = fs
-  .readFileSync('./resources/football.csv', {
-    encoding: 'utf-8',
-  })
-  .split('\n')
-  .map(
-    (row: string): string[] => {
-      return row.split(',');
-    }
-  );
+const csvReader = new CsvFileReader('resources/football.csv');
+csvReader.read();
+
+const matches = csvReader.data;
 
 let manUtdWins = 0;
 
