@@ -1,13 +1,14 @@
 import fs from 'fs';
-import { dateStringToDate } from './utils';
 
-export class CsvFileReader {
-  data: string[][] = [];
+export abstract class CsvFileReader<T> {
+  data: T[] = [];
   filename: string;
 
   constructor(filename: string) {
     this.filename = filename;
   }
+
+  abstract mapRow(row: string[]): T;
 
   read(): void {
     this.data = fs
@@ -20,16 +21,6 @@ export class CsvFileReader {
           return row.split(',');
         }
       )
-      .map(
-        (row: string[]): any => {
-          return [
-            dateStringToDate(row[0]),
-            row[1],
-            row[2],
-            parseInt(row[3]),
-            parseInt(row[4]),
-          ];
-        }
-      );
+      .map(this.mapRow);
   }
 }
