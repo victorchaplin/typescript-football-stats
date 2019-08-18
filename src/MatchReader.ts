@@ -1,9 +1,14 @@
-import { MatchResult } from './MatchResult';
-import { dateStringToDate } from './utils';
-
-type MatchData = [Date, string, string, number, number, MatchResult, string];
+import { CsvFileReader } from './readers/CsvFileReader';
+import { MatchData } from './types/MatchData';
+import { MatchResult } from './types/MatchResult';
+import { dateStringToDate } from './utils/utils';
 
 export class MatchReader {
+  static readMatchesFromCsv(filename: string): MatchReader {
+    const csvReader = new CsvFileReader(filename);
+    return new MatchReader(csvReader);
+  }
+
   dataReader: DataReader;
   matches: MatchData[] = [];
 
